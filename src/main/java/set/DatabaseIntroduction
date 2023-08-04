@@ -1,0 +1,91 @@
+Database Introduction:
+    A Database Management System (DBMS) is a software system that is designed to manage and organize data
+    in a structured manner.
+    It allows users to create, modify and query a database, as well as manage the security and access
+    controls for that database.
+
+    Overview of where we need database:
+
+    E-Commerce with Microservice
+    --
+    User Registration
+          - User account is created
+          - Do the shopping
+          - search the product   --- Getting products from Databases
+          - sorting and filters  --- implementation in backend application
+          - add products into cart -- cart service --it's own database where user specific information is stored
+          - order the product  -- order service -- it's own database
+          - payment for product -- payment service -- it's own database
+          - provide the feedback and review -- review service -- it's own database
+
+
+    Some key features of DBMS
+       - Data modeling : This defines the structures and relationships of data in a database.
+       - Data storage and retrieval : A DBMS is responsible for storing and retrieving the data from
+            database and can provide the various methods for searching and querying the data.
+       - Data integrity and security: A DBMS provides tool for enforcing data integrity and security
+        constraints such as constraints on the values of data and access control that restricts
+        who can access the data.
+        Example : This is achieved using username and passwords for user accounts.
+       - Backup and recovery: A DBMS provides the mechanism for backing up and recovering the data
+       in the event of a system failure.
+
+
+
+    RDBMS : (Relational Database Management System)
+        Data is organized in the form of tables and each table has a set of rows and columns
+        The data is related to each other that means one table has relation with other table
+        And it also shared the data in the form of foreign keys.
+        There will be schemas which defines the tables
+
+        example of
+            Student Schema:
+                RollNumber
+                Name
+                Address
+                mobile
+                blood group
+
+
+        Example :
+            Student has a association with Department
+            This relation will one student can be associated with only one department
+            This is example of one to one mapping.
+            One student can be associated with multiple clubs in the college.
+            This is example of one to many mapping.
+
+    Examples of RDBMS:
+        Oracle, My SQl, Microsoft SQL Server, Postgress SQL, Maria DB etc.
+
+    NoSql:
+        Data is organized in the form of key-value pairs, document, graph or column based.
+        These are designed to handle large scale and high performance scenarios.
+        When we have schema less implementations, we should think about using NoSql databases.
+
+    Example:
+        MongoDB, InfluxDb, Redis Db, Cloud providers NoSql databases like AWS has DynamoDB.
+
+
+
+    Data languages:
+        DDL (Data Definition Language)
+        DML (Data Manipulation Language)
+        DCL (Data Control Language)
+        TCL (Transactional Control Language)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

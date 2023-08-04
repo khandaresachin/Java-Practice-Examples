@@ -1,0 +1,933 @@
+
+Java:
+
+    Java is a programming language that James Gosling developed at Sun Micro-system in 1995.
+    Java was taken into possession by Oracle Corporation in 2009.
+
+    We can call it  a high-level programming language which makes it convenient for us to write,
+    compile and debug Java programs.
+
+    Java is class-based object-oriented programming language that implements the principle of write
+    once execute anywhere.
+
+    So Java applications are compiled into bytecode, they can run on any JVM-supported machines.
+
+
+    Why use Java ?
+        1) Object oriented programming language
+        2) Portable
+        3) Simple
+        4) Secure
+        5) Robust
+        6) Platform independent
+        7) Distributed
+
+
+            Source Code (.java)
+                ||
+                ||
+            Java Compiler
+                ||
+                ||
+             Byte Code (Platform independent)
+                ||
+                ||
+             JVM(Platform specific)
+                ||
+                ||
+                OS
+
+
+JDK:
+    JRE:
+        JVM:
+
+    JDK: Java Development Kit
+        is a software development kit required to develop applications in java.
+        When we download JDK, JRE and JVM is also downloaded as a part of it.
+
+        In addition to JRE and JVM, JDK also contains a number of development tools:
+            - compilers
+            - JavaDocs
+            - Java Debugger
+
+                JDK
+                    -JRE
+                        -JVM
+                        -Class Libraries
+
+                    -Compilers
+                    -Java Docs
+                    -Debugger
+
+    JRE: Java Runtime Environment
+        JRE is a software package that provides java class libraries and JVM as well as other
+        components that are required to run Java applications.
+
+        If we need to run Java programs, but not to develop them, JRE is what we need.
+
+    JVM: Java Virtual Machine
+        JVM is an abstract machine that enables our computer to run a Java Program.
+        When you run the java program, Java compiler first compiles your java code into ByteCode.
+
+        Then, JVM translates bytecode into native machine code (set of instructions that a
+        computer's CPU executes directly).
+
+        Java is a platform-independent language. It's because when you write Java code, its ultimately
+        written for JVM but not your physical machine.
+        Since JVM executes the java bytecode which is platform-independent, Java is platform independent.
+
+****************************************************************************************
+
+
+    Packages:
+        Package in java is a mechanism to encapsulate group of  classes, sub-packages and interfaces.
+        Packages are used for :
+            - Preventing naming conflicts:
+                for example in batch2 package we can't create another HelloWorld class. But we can create
+                it in some other packages.
+            - Provides controlled access: protected and default have package level access control.
+            - Packages can  be considered as data encapsulation (or data-hiding).
+            - All we need to do is put related classes into packages. After that, we can simply write
+            an import class statement from existing packages and use it in a program.
+
+            A package is a container of group of a related classes where some of the classes are
+            accessible are exposed and others are kept for internal purpose.
+
+
+            Two type of packages:
+                - User defined packages
+                - In Build Packages
+
+        User defined package:
+            These are packages that are defined by the user/developer.
+            Example:
+                package myPackage;
+                class A{
+
+                }
+            We should always create packages with lower case and give the meaningful names.
+
+       In Build Package:
+            These packages consist of a large number of classes which are part of Java API.
+            Some of the commonly used packages are:
+                1. java.lang:
+                    the default package from in build packages.
+                    Contains language support classes. (for example classes which defined primitive
+                    data types and mathe operations)
+               2. java.io:
+                    This consist of classes related to input and output.
+               3. java.util:
+                    Contains utility classes which implements data structures and collections also
+                    Date time API
+               4. java.net:
+                    Contains the classes related to networking.
+               5. java.awt:
+                    Contains classes related to graphical user interface like buttons, labels, menus
+                    etc.
+               6. java.applet:
+                    Contains the classes for creating applets.
+
+
+    Note: To use any of the in build packages in program we need use - import class statement so that
+    it will be clear to programmer as well as while compilation there won't be any error because
+    we are already declare the import statement to convey from where we are using the class.
+
+
+    Class :
+        is the blueprint which are create to encapsulate the data members and member functions.
+        Its encapsulation example which combines the data members and member functions into a one.
+
+        Syntax:
+            <access-specifiers> class <name-of-class>{
+                    // data-members
+
+                    // member-functions
+            }
+
+       example:
+           public class HelloWorld{
+
+                int number;
+
+                public void display(){
+                    // body of function
+                }
+           }
+
+    Access Specifiers/Modifiers:
+        We can use the modifiers with class, data members and member functions.
+        We don't need to use (:) after modifiers as we did in C++.
+
+        - public
+        - private
+        - protected
+        - default(no mention to declare explicitly)
+
+
+
+                Default         private         protected       public
+
+same class          yes             yes              yes           yes
+
+same package        yes             No               yes           yes
+
+different-package    No             No               yes           yes
+subclass
+
+different-package    No             No               No            yes
+none- subclass
+
+
+*****************************************************************************
+
+    Understanding the main method in Java
+
+    public static void main(String args[]){
+
+    }
+
+    public:  access modifier, which denotes the method is accessible with use of public.
+            Method is accessible to execute by compiler.
+    static: The members which are declared as static are class level members. Nothing but those
+            members are common for all objects .
+            - static are visible or accessible before creating the object of class.
+
+    void:  It returns nothing from the method.
+
+    main: the keyword which denotes the main method. its reserved keyword.
+    String args[]: The parameters/arguments for the main method. Which are declared to provide the
+            commandline arguments in java.
+
+*****************************************************************************
+
+Java Input and Output:
+
+    Output:
+        System.out.println() -- Prints the statement on the new line
+        System.out.print() --  prints the statement on the same line where cursor is
+
+        example:
+            System.out.println("Hello ! This is output from Java");
+
+            String name = "ABCD";
+            System.out.println("Hello this is :" + name);
+
+
+    Input:
+        Scanner class (java.util) and BufferedReader (java.io)
+
+        - BufferedReader is synchronous (While multithreading this concept is used to avoid the
+                thread locking) while scanner is not
+        - BufferedReader should be used if we are working with multiple threads.
+        - BufferedReader has a significantly larger buffer memory than scanner.
+        - The Scanner has a little buffer (1 KB) as opposed to the BufferedReader (8 KB of buffer)
+        - Scanner does the parsing while reading the input.
+
+        Java Scanner Input Types:
+            Scanner has different methods for each primitive data types.
+
+            nextInt()   - Used for reading the int value
+            nextFloat() - Used for reading the float value
+            nextDouble()- reading the double value
+            nextLong() - reading the long value
+            nextShort() - reading the short value
+            nextByte() - reading the byte value
+            nextBoolean() - reading the boolean value
+            nextLine() - we use this method for reading string values as well
+
+
+        BufferedReader:
+            BufferedReader needs the input stream while creating the object
+            It has only readLine() method which return the String but we can use Wrapper classes to
+            parse that String into specific data type
+
+                example
+                    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    int age = Integer.parseInt(br.readLine());
+
+********************************************************************************
+Java Arrays:
+
+        An array is the collection of similar data types of data.
+
+
+    How to declare the arrays:
+
+            dataType[] arrayName;
+
+            double[] data;   // declaration
+
+            data = new double[10];  // memory allocation
+
+    Initialize the array with index
+            data[0] = 10.5;
+            data[1] = 15.5;
+            data[2] = 18.0;
+
+    In java, we can initialize the array while declaration:
+
+            int[] age = {12,20,18,15,10}; // declare and initialize the array
+
+       other way,
+
+            int[] age = new int[5];
+            age[0] = 12;
+            age[1] = 20;
+            age[2] = 18;
+            age[3] = 15;
+            age[4] = 10;
+
+       access the array elements
+
+            array[index];
+
+       example:
+            age[4]; // 10
+            total size of array - 1 is the last index of the array
+
+       Looping through the array
+
+          for(int i=0; i< age.length; i++){
+            System.out.println(age[i]);
+          }
+
+
+        do{
+         // body
+        }while(i<0);
+
+        initialization
+        while(condition){
+            // body
+
+            increment/decrement;
+        }
+
+***********************************************************************
+
+Function // Method
+
+    member function -- function which is part of class
+
+    In java we can't write the function outside of class so every function  is a member function.
+
+
+    In java, there are two types of methods:
+        - User defined methods:
+            We can create our own methods based on our requirements
+        - Standard library method:
+            We can use build in methods from java standard library
+
+
+      Declaring the Java Method:
+
+            returnType nameOfMethod(){
+
+                    // body of the method
+            }
+
+       Calling the method in java.
+            In same class, if we are calling the method
+                - methodName();
+
+            class A{
+
+                public void show(){
+                    System.out.println("Show method is called");
+                }
+
+                public void print(){
+                    show(); // calling the show method
+                }
+            }
+            Calling the method outside of class:
+              class A{
+                  public void show(){
+                     System.out.println("Show method is called");
+                  }
+              }
+
+              class B{
+                public void print(){
+                A obj = new A();
+                    obj.show(); // calling method show() from A
+                }
+              }
+
+    Method Overloading and Overriding
+
+        Overloading :
+            - is achieved in same class
+            - no inheritance is required
+            - method name and returnType will be same
+            - will differ only on the basis of arguments and their types.
+
+        Overriding:
+            - is achieved in two classes
+            - involves the inheritance to achieve the overriding
+            - no change in methodName, returnType and arguments
+            - Not even change in number of arguments as well as their data types.
+
+    Constructors:
+        A constructor is special member of class with same name and no return type.
+
+        Constructors are used to initialize the data members of class.
+        Whenever the objects of class gets created constructors get called automatically.
+
+        example
+            A obj = new A(); // default constructor of class A will get called.
+
+            A obj = new A(10, "ABC", 10000, "Pune") // Parameterized constructor of class A will get called
+            // in parameterized constructor there can be more than one parameterized constructors created
+            // in class but based on the values passed while creating object the constructor call will
+            // get resolved.
+
+        unlike c++, destructors are not supported in java.
+
+        Garbage collector in java:
+            - JVM
+            - no manual work is required.
+            - automatically handled by JVM.
+
+**************************************************************************************
+    Keywords:
+        - this
+        - super
+
+
+Java Inheritance:
+
+
+    class is inheriting another class then --- extends keyword
+       example
+                class B extends A{
+                }
+
+    In java Multiple inheritance is not possible, that mean one class can not extend at time more than
+    one class.
+
+    Single Inheritance:
+        A
+        |
+        |
+        B
+
+        class B extends A{
+
+        }
+
+    Multilevel Inheritance
+
+            A
+            |
+            |
+            B
+            |
+            |
+            C
+
+        class B extends A{
+
+        }
+
+        class C extends B{
+
+        }
+
+    Hierarchical Inheritance
+
+            A
+          |   |
+          B   C
+
+         class B extends A{
+
+         }
+
+         class C extends A{
+
+         }
+
+
+    Multiple Inheritance:
+            Though we can not implement the multiple inheritance in java using classes.
+
+            A       B
+                |
+                C
+
+            class C extends A , B ----- not possible with classes
+
+       Using interfaces we can achieve the multiple inheritance.
+
+       implements is the keyword used to implement the interface in class.
+       but when one interface is inheriting the another interface then extends used as those are of
+       similar category.
+
+        interface A
+        {
+            public void show(); // method declaration and no method body
+        }
+
+        interface B
+        {
+            public void print();
+        }
+
+        interface C extends A, B  // only in case of interface we can achieve the multiple inheritance
+        {
+            // own methods of C interface
+            public void init();
+        }
+
+        The class which will implement the interface C has to implement the methods from both A and B as
+        well.
+
+
+Note:
+    By default every class is the subclass of 'Object' class in java.
+
+    'this' keyword:
+        used to initializing the data members in the constructor.
+        'this' differentiates the data members and parameters.
+        'this' is only used in the same class and we can not access the other class members.
+
+    'super' keyword:
+        used to call the data members (non private), member functions and constructor of parent class.
+        we can call super class constructor only from sub class constructor
+        The constructor call using super keyword should be the first statement in sub class constructor.
+        This keyword can only be used in sub classes.
+
+************************************************************************************
+
+Keywords:
+    - final
+
+
+
+    final:
+        final keyword is used in different contexts.
+        We can use it with data members, member functions and classes.
+
+*      final variable  --- To create constant variable
+
+        for example:
+            final int THRESHOLD = 10;  // constant in java
+
+        In terms of final variables, after first value initialization we can not change the value.
+
+*       final method  ---   Prevent method overriding
+
+        for example:
+            class A{
+                public void display(){
+                    // body
+                }
+
+                public final void show(){
+                    // body
+                }
+            }
+
+            class B extends A{
+                public void print(){
+                    // body
+                }
+
+                @Override
+                public void display(){
+                    //
+                }
+
+                @Override
+                public void show(){     //this is not possible because show() in class A is final
+
+                }
+            }
+
+*       final class         --- prevent inheritance
+
+        for example:
+            class final Dog extends Animal{
+
+            }
+
+            class LabDog extends Dog{  // this is not possible because the Dog class is declared as
+                // final
+
+            }
+
+********************************************************
+   - static
+       - 'static' keyword defines the member of class at class level which is common for all its objects
+       - static members can not be called using object i.e. object.memberName not possible for static
+            members
+       - static can only call other static
+       - static members are accessible even before creating the object of class
+       - Non static members can call the static members
+
+
+**********************************************************************************************
+
+String in Java:
+    Strings are type of objects that can store the sequence of characters.
+    A String acts the same as an array of characters in java.
+
+    String is a class in java, which also provides the different manipulation methods which can be used
+    for string manipulation.
+
+    In java memory area there are following blocks:
+        - Heap area ( all objects in java)
+            - metaspace
+                String Constant Pool (SCP)
+        - Method area
+        - Stack area
+        - Program Counter
+        - Native method stack
+
+
+    How to create strings in java:
+
+        Creating objects of string, as it uses the new keyword:
+
+            String s = new String(); // There are around 13 constructors in String class.
+
+            String s = new String("Hello World");
+
+        Creating String lateral:
+             String s1 = "Hello Java"; // will be stored into Java String constant pool area.
+
+             String s2 = "Hello Java"; //
+
+             // in memory there will be only one memory block created, all the objects of string
+             // which are holding the same value, will reference to same memory block.
+
+-----------------------------------------------------------
+
+String StringBuffer and StringBuilder
+
+
+String
+    - Immutable object
+
+
+
+StringBuffer
+    - Mutable
+    - Thread-safe (Synchronized)
+        - It means two threads can't call the methods of StringBuffer simultaneously.
+    - Its less efficient than StringBuilder
+    - Its useful only in case of multi-threaded applications
+
+StringBuilder
+    - Mutable
+    - Not Thread-safe (Not synchronized)
+    - More efficient than StringBuffer
+    - Most efficient choice for single threaded applications
+
+*****************************************************************************************
+
+Java Memory Management:
+
+    JVM defines various run time data areas which are used during execution of program. Some areas
+    are created by the JVM whereas some are created by threads that are used in program.
+
+    However, the memory area created by JVM is destroyed only when JVM exits.
+    The data area of thread are created during instantiation and destroyed when the thread exits.
+
+    Note: For String constant pool, prior to java 8 there was permanent generation (PermGen) which
+    was of fixed size due to which there were so many challenges for applications to use strings.
+    So from java 8 onwards it got replaced with MetaSpace.
+    Metaspace is flexible and can grow with size if required.
+
+
+    Garbage Collection:
+        Java Garbage collection is the process by which Java performs automatic memory management.
+
+        Java programs compile to bytecode that can be run by JVM. When java program runs on the JVM,
+        objects are created on heap, which is portion of memory dedicated to the program.
+        Eventually some objects will no longer be needed for execution.
+
+        The garbage collector finds these unused objects and deletes them to free up memory.
+        All this automatic process and there no manual intervention is required from developer.
+
+
+
+    Heap          Method Area       JVM Stack       Native Method Area      PC Registers
+
+
+Heap
+    - Stores the objects in a memory.
+    - This memory  is allocated for all class instances and array.
+    - Heap can be of fixed or dynamic size depending upon the system's configuration.
+    - Garbage collection is heap area is mandatory and done by JVM garbage collector.
+
+
+Method Area:
+    - It is logical part of heap area and created on startup of JVM.
+    - This memory is allocated for class structures, method data and constructor field data.
+    also interfaces or special method used in class.
+    - Needs not to be contiguous.
+
+JVM Stacks:
+    - A stack is created at same time when a thread is created and used to store data and partial results
+    which will be needed while running value for method and performing dynamic linking.
+    - The code which is running will be stored into jvm stacks.
+
+
+
+
+JVM Generations:
+    - The information learned from object allocation behavior can be used to enhance the performance
+    of the JVM. Therefore, the heap is broken into smaller parts or also called as generations:
+        The heap generations are:
+                - Young Generation
+                - Old Generation
+                - Permanent Generation
+
+
+    Young Generation:
+        The young generation is where all new objects are allocated and aged. When the young generation
+        completely fills up, this causes a minor garbage collection.
+
+        Minor garbage collection can be optimized assuming a high object mortality rate. A young
+        generation full of dead objects is collected very quickly.
+
+        Some surviving objects are aged and eventually move to the old generation.
+
+    Stop the world event: All minor garbage collections are "Stop the world event" this means that
+    all application threads are stopped until operation completes.
+    Minor garbage collections are always Stop the world events.
+
+    Old Generation:
+        The old generation is used to store long surviving objects. Typically, a threshold is set
+        for young generation object and when that age is met, objects gets moved to old generation.
+
+        Eventually, old generation needs to be collected. This event is called a major garbage collection.
+
+    Permanent Generation:
+        The permanent generation contains metadata required by the JVM to describe the classes and methods
+        used in the application. The permanent generation is populated by the JVM at runtime based on
+        classes in use by the application.
+            In addition, Java SE library classes and methods may be stored here.
+
+        Classes may get collected (unloaded) if the JVM finds they are no longer required and space may
+        needed for other classes. The permanent generation is included in full garbage collection.
+
+
+
+****************************************************************************************
+
+Memory Issues in Java:
+
+    Memory issues arise due to poor resource management and inadequate resource allocations.
+    Memory issues in java can have symptoms such as excessive memory usage, where heap grows abnormally
+    as the java application runs.
+    The application may also become sluggish due to underlying memory issue (such as inadequate heap
+    allocation or memory leak), requiring the garbage collector to run frequently(Which will cause
+    Stop the world event )
+
+
+    Memory Leak: Memory leak occurs due to unintentional object references that are erroneously kept
+    in the application even when they are no longer required.
+    This prevents those objects from being garbage collected. Slowly, the accidental leak grows over
+    time and occupies a significant portion of heap space.
+
+
+************************************************************************
+
+Abstraction:
+    Abstraction is the concept of object oriented programming that "shows" only essential attributes
+    and "hides" unnecessary information.
+    The main purpose of abstraction is hiding unnecessary details from the users.
+
+    Examples of Abstraction:
+        Any website, car, atm, banks etc
+
+    In java, abstraction is achieved with
+        - Abstract classes
+        - interfaces
+
+    Abstract Class.
+        - Abstract class must have at least one abstract method
+        - Abstract method can't have body in abstract class
+        - Abstract class should be declared as abstract with 'abstract' keyword.
+        - We can have non abstract methods in abstract class
+        - We can't create object of abstract class.
+        - The class which extends abstract class i.e. sub class of abstract class must implement
+          the abstract method otherwise the subclass also should be declared as an abstract class.
+        - We can't implement the multiple inheritance in java so only one class at a time will be
+          extended by any class.
+
+
+    Interfaces:
+        - We can achieve 100% abstraction with interfaces.
+        - An interface in java is a blueprint of a behaviour.
+        - There can be only abstract methods in interfaces.
+        - We can not create objects or can not have constructors for interfaces.
+        - Non abstract methods are not allowed in interfaces.
+        - All the methods declared in interfaces must be implemented by implementing class.
+        - All methods declared in interfaces must be public
+        - To implement the interface in class we have to use 'implements' keyword
+        - We can achieve multiple inheritance in java using interfaces.
+
+
+
+**********************************************************************************
+Exception Handling in Java:
+
+    - Exception is  an unwanted  or unexpected event, which occurs during the execution of program i.e
+      at runtime, that disrupts the normal flow of program execution.
+    - Exceptions can be  caught and handled by the program.( for that we need to write down exception
+      handling in code).
+    - When exception occurs within a method it creates the object. This object is called the exception
+      object. It contains information about the exception, such as the name, message and description
+      of the exception and state of the program when the exception occur.
+
+
+    Major reasons why an exception occurs:
+        - Invalid user input / user data
+        - Device failure
+        - Coding error
+        - Due to loss of network connectivity
+
+    Error: Indicates a serious problem that a reasonable application should not try to catch.
+    Exception: Indicates condition that a reasonable application might try to catch and handle it.
+
+
+    Exception Hierarchy:
+        All exception and error types are subclasses of class Throwable, which is the base/super class
+        of hierarchy.
+
+                                    Throwable
+                                        |
+                                        |
+                          |                         |
+                          |                         |
+                 Exception                          Error
+                    Checked Exception                   Virtual Machine Error
+                        - ClassNotFoundException        Out of memory error
+                        - IOException                   stack overflow error
+                        - FileNotFoundException
+                        - InterruptedException
+                        - SQLException
+
+                    Unchecked Exception
+                     RuntimeException
+                        - NullPointerException
+                        - ArithmeticException
+                        - ArrayIndexOutOfBoundsException
+                        - IndexOutOfBoundsException
+                        - ClassCastException
+                        - IllegalArgumentException
+                        - ArrayStoreException
+
+
+
+        Checked Exceptions:
+            Checked exceptions are also known as compile time exceptions because these exceptions are
+            checked at compile time by the compiler.
+            Example:
+                - ClassNotFoundException
+                - IOException
+                - FileNotFoundException
+                - InterruptedException
+                - SQLException
+
+        Unchecked Exception:
+            The unchecked exception is just opposite of checked exception. The compile will not
+            check these exceptions at compile time.
+            If a program throws an unchecked exception, even if we didn't handle or declare it,
+            the program will not give any compilation error.
+
+            Examples:
+                - NullPointerException
+                - ArithmeticException
+                - ArrayIndexOutOfBoundsException
+                - IndexOutOfBoundsException
+                - ClassCastException
+                - IllegalArgumentException
+                - ArrayStoreException
+
+    Throwing and Catching exceptions:
+        Java creates an exception object when an exception occurs while executing statement. The
+        exception object contains a lot of debugging information such as method hierarchy, line number,
+        where exception occurred as well as the type of exception.
+
+        If an exception occurs in a method, the process of creating exception object and handling it
+        over to the runtime environment is nothing but "throwing exception".
+        The normal flow of the program halts and the JRE tries to find the handler for the exception.
+        Exception handler is the block of code that can process the exception object.
+            - The logic to find the exception handler begins with searching in the method where
+             exception occurred.
+            - If no appropriate handler is found then it will move  to the caller method.
+            - and so on.
+
+        So if the method's call stack is  A->B->C and an exception is raised in method C, then the
+        search for appropriate handler will move from C->B->A.
+
+        If an appropriate exception handler is found, the exception object is passed to the handler
+        for processing. The handler is said to be "catching the exception".
+
+        if there is no appropriate exception handler found then the program terminates and
+        prints the information about exception to the console.
+
+
+    Java exception handling framework is used to handle runtime exceptions. The compile time
+    exceptions have to be fixed by developer while writing the code or else the program won't execution.
+
+    Java Exception Handling Keywords:
+
+    To handle the exception in java, we have following methods or ways to use in java programs
+
+        - try and catch block:
+           - We need to write down the code which might cause the exception under the try block.
+           - We can have catch block to catch the exception which is thrown by the code within try
+           - With single try block we can have catch block but immediately after try block we need
+             to write the catch block.
+           - For single try block we have as many as catch blocks we want.
+           - When we have multiple catch blocks for a single try block then the hierarchy of exception
+             should be taken care while writing those catch blocks.
+
+        - throw : We know that if an error occurs an exception object is getting created and then
+            java runtime starts processing to handle them.
+            Sometimes we might want to generate exceptions explicitly in our code.
+            For example if the login password for the user if null then we want to throw some
+            exception back to user.
+
+        - throws : When we are throwing an exception in a method and not handling it, then we have to
+          use 'throws' keyword in the method signature to let caller program know the exception that
+          might be thrown by the method. So that caller will have provision to either handler or also
+          can declare 'throws' keyword with method signature.
+
+        - finally : The finally block is optional and can be used only with try-catch block.
+          can't be used independently. Since exception halts the process of execution, we might have
+          some resources open that will not get closed. so we can use the finally block.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

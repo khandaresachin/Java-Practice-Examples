@@ -1,0 +1,226 @@
+Collection Framework:
+
+    What is framework
+     - A framework is a set of classes and interfaces which provides ready to use classes
+       within architecture.
+
+    Collections Hierarchy:
+        The collection in java provides an architecture to store and manipulate the group of objects,
+        interfaces and classes. A collection is a group of objects or it is a single entity that
+        represents multiple objects.
+
+        Java Collection framework consists of classes and interfaces by using these classes and interface
+        developers can represent a group of objects in a single entity.
+        Collections framework is present in java.util package.
+
+
+                    Collection                                           (interface)
+                        |
+                        |
+          List         Queue                 Set                      Map          (interface)
+            |           |                     |
+            |            Deque                  SortedSet                           (interface)
+            |              ArrayDeque              TreeSet                           (Classes)
+      ArrayList
+      LinkedList                              HashSet
+      Vector           PriorityQueue          LinkedHashSet
+      Stack
+
+
+
+
+                            Map             (interface)
+                             |
+                             |
+                              SortedMap         (interface)
+                                NavigableMap    (interface)
+                                    |
+                                    |
+                                    TreeMap     (Classes)
+                              HashMap
+                              LinkedHashMap
+                              AbstractMap
+
+
+Scenario:
+         event triggered once user submits some data
+        User -- Website --- > web server --> backend application --> Database (persistent data store)
+                                                collection ( in memory storage)
+
+    Why Map is not part of collection framework hierarchy:
+        Because map holds key and value pairs its incompatible with type of collection interface.
+        As collection works only with single element like add() method has only one parameter of
+        element.
+
+Note:
+    Collection can only be used with objects and can not be used with primitive data types.
+
+As we have gone through the arrays in c, c++ as well as in java. Arrays has some limitations with
+size of arrays. We need to upfront declare the size of array and it is not possible to modify of
+increase the size on the go.
+Array are fixed in size as well as there is limitation with methods from array.
+
+With the collections - we get one advantage over arrays is the every collection is flexible and
+automatically grows on the go. We don't have to declare the size of collections upfront.
+
+List Interface:
+    The List interface in java provides a way to store the ordered collection (as know an sequence).
+    This is child interface of collection interface. It is an ordered collection of objects in
+    which duplicate values can be stored.
+    Since list preserves the insertion order, it allows positional access and insertion of elements.
+
+        0       1       2       3        4           5           6        7       8
+    ------------------------------------------------------------------------------------
+    | Pune | Mumbai | Delhi | Chennai | Cuttack | SriNagar | Hyderabad | Nashik | Pune |
+    -------------------------------------------------------------------------------------
+
+    ArrayList:
+        Dynamic implementation of array.
+        Maintains the insertion order for collection.
+        Good choice for single threaded application.
+        We can traverse through the collection and add/remove elements at any index.
+        ArrayIndexOutOfBoundException can be thrown when trying to access or remove the elements which
+        are outof index.
+
+    LikedList:
+        Linked list is a linear data structure where the elements are not stored contiguous locations
+        and every element is a separate object with data part and address part which is known as
+        nodes for linked list.
+
+
+    Nodes of linked list
+     ----------                 ------------         -----------            -----------
+    |Pune| Next|                |Mumbai|Next|        |Patna|Next|           |Delhi|Null|
+     ----------                 ------------         -----------            -----------
+     nfjhf14564                  0121444d            mlkd124                  ldkfd1224
+                  ------------
+                 |Chennai|Next|
+                  ------------
+                  dafef4646
+
+     Each node in the linked list is connect with each other using Next value of node that means next
+     nodes memory address.
+
+
+     Vector:
+        Implementation of a dynamic array. just similar to arraylist but the only difference is that
+        Vector mean for multi-threaded applications.
+        Vector are synchronized and thread-safe so we should consider using Vector only when we are
+        implementing the multithreading.
+        In case of single threaded application better to use ArrayList instead of using Vector.
+
+
+     Stack:
+        Stack is subclass of Vector.
+        Stack is the data structure which maintains the order of elements.
+        Fundamental of stack is FILO (First In Last Out) also LIFO (Last In First Out).
+        Stack has its own methods like Push, Pop,  Peek etc..
+        Push operation is similar to add but it will add the element at the top of stack.
+        Pop operation is similar to remove but it will remove the element which is at the top of stack.
+        Peek operation will just return the element which is at the top of stack but won't do any other
+        operation.
+
+
+
+     Queue:             front                           rear
+        It is ordered list of objects with its use limited to inserting elements at the end of the
+        list and deleting the elements from the start of list.
+        It follows the FIFO (first in first out) as well as LILO(Last in last out) principle.
+
+     There are classes which implements the queue interface,
+     PriorityQueue:
+        PriorityQueue class implements the queue interface to process the objects based on priority.
+     We need to provide the comparator at the time of creation of priority queue object.
+
+
+    For comparing the objects in java we have two options:
+        Comparable interface
+        Comparator interface
+    With comparable we can have a default implementation of comparing the object based on the parameter.
+    But if we to compare the object based on multiple such parameters then we can not achieve the same
+    with Comparable interface.
+    Comparable interface has compareTo() -- which we need to implement in the class for which we are
+    going to implement the comparison.
+
+    Comparator -- when we have requirement of comparing the object based on multiple parameters then'
+    we should think about comparator.
+    We need to implement the Class comparator separately and then we can have the implementation of
+    compare method based on some parameters.
+    At the time of creating the collection type we can pass this newly created comparator class so
+    that the collection type we consider the comparator for that object.
+
+    Deque:
+        Deque is the sub interface of queue. Which is basically double ended queue.
+        With Deque we can add and remove the elements from both ends of queue.
+        Head and tail or front and read are the names which can denote the Deque ends.
+        There methods for achieving the double ended queue implementation like addFirst(),
+        addLast(), removeFirst(), removeLast(), getFirst() and getLast() etc...
+
+        By using these methods we can achieve the implementation for Deque.
+
+
+*************
+
+    Set interface:
+        It is a unordered collection of objects in which duplicate values cannot be stored.
+        It is an interface that implements the mathematical set.
+
+        Set interface allows us to perform basic mathematical set operations like union, intersection,
+        and subset.
+
+        Union - To get the union of two sets a and b, we can use a.addAll(b);
+        Intersection - To get the intersection of two sets, a and b, we can use a.retainAll(b);
+        Subset - To check if a is subset of b, we can use b.containsAll(a).
+
+
+    HashSet:
+        Implementation of set interface in which no guarantee of iteration order as well the order of
+        insertion of elements.
+        It also doesn't guarantee the order will be constant over the period of time.
+        It allows the null entry, but only one null entry will be allowed.
+
+    LinkedHashSet:
+        Implementation of Hashtable and linked list in which the order of iteration is predictable.
+        So the order in which we add the elements in the set is maintained with LinkedHashSet.
+
+        It also allows one null element but only difference with HashSet is it guarantees the order
+        of insertion or iteration.
+
+
+
+    Map: (interface)
+        Java map interface represents a mapping between keys and values.
+        Map is not subtype of collection interface, because it behaves a bit differently from the rest
+        of the collection types.
+        A map contains unique keys.
+        Maps are perfect to use for key-value association mappings such as dictionaries.
+        The maps are used to perform lookups by keys or when someone wants to retrieve and update
+        elements by keys.
+
+        Following are the few implementation classes for map:
+            - HashMap
+            - LinkedHashMap
+          - SortedMap (interface) sub type of Map interface
+            - TreeMap
+
+
+        In Map interface, we have put() which return the value associated with the key.
+        If we are making a fresh entry of unique into map with put() then it will return null
+        If we are trying to add the entry with existing key into map then it will return the previous
+        value associated with key.
+
+
+        TreeMap is the Navigable interface implementation class. So basically Navigable interface
+        extends SortedMap and further SortedMap extends the Map interface.
+        This class has special handling for keys as its stores according to keys natural ordering.
+        In TreeMap null keys are not acceptable but we can provide the null values against key.
+        We also have provision to provide the Comparator while creating the TreeMap object.
+
+
+
+
+
+
+
+
+
