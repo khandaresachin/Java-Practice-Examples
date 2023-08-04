@@ -1,0 +1,33 @@
+Synchronization:
+    Java Synchronization is used to make sure by some synchronization method that only one thread
+    can access the resource at a given point in time.
+
+    It is capable of controlling access to multiple threads to a particular shared resource.
+    The main reason for using thread synchronization are:
+        - To prevent the interference between threads
+        - To prevent the problem of consistency
+
+    Types of Synchronization:
+        1) Process Synchronization
+        2) Thread Synchronization
+
+    Process Synchronization is done at the Operating System level
+
+    Thread Synchronization is something we are going to work on in Java:
+
+        1) Mutual
+            - Synchronized Method
+            - Synchronized Block
+            - Static Synchronization
+
+
+    General form of synchronized block:
+        //only one thread can execute at a time
+        //sync_object is a reference to an object
+        //whose lock associates with monitor
+        //the code is said to be synchronized on the monitor object
+        synchronized(sync_object){
+            // access shared variable and other
+            // shared resource
+        }
+
