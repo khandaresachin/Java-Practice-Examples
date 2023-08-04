@@ -1,0 +1,399 @@
+Spring:
+    IoC- Container:
+
+    Data access framework:
+
+    Spring MVC framework:
+        Module view controller
+        in web applications the user request first go through the controller and are then dispatched to
+        different views.
+        In module we will have the implementations for different views.
+
+    Transaction Management:
+
+    Spring web services:
+
+    JDBC Abstraction Layer:
+
+
+Spring frameworks seven modules:
+    - Spring core
+    - Spring AOP
+    - Spring Web MVC
+    - Spring DAO (Data Access Object)
+    - Spring ORM (Object Relation Management)
+    - Spring Context
+    - Spring Web Flow
+
+  These modules provide different platforms to develop different enterprise applications.
+  For example:
+            You can use spring web mvc module for developing MVC-based applications. Also you can use
+            spring ORM to manipulate different databases data with use of Hibernate.
+
+
+  Spring Core Module:
+        The spring core module, which is the core component of the spring framework, it provides the IOC
+        container.
+        There are two types of implementation of the spring container:
+            1) Bean Factory
+            2) Application context
+
+        Bean factory is defined using the org.springframework.bean.factory.BeanFactory interface and acts
+        as container for beans( nothing but dependent object)
+
+        The Bean factory container allows you to decouple the configuration and specification of
+        dependencies from program logic.
+
+        In spring framework, the Bean factory acts as central IOC container that is responsible for
+        instantiating application objects.
+        It also configures and assembles the dependencies between the objects.
+
+        There are numerous ways of implementation of Bean Factory interface.
+        The XmlBeanFactory class is the most common implementation of the BeanFactory.
+
+  Spring AOP:
+        Similar to object oriented programming (OOP), AOP breaks down the applications into hierarchy
+        of objects, AOP breaks down the programs into aspects or concerns.
+        Spring AOP allows you to implement concerns or aspects in Spring application.
+
+        For example, transaction management is required in bank operations such as transferring an
+        amount from one account to another spring AOP module provides a transaction management
+        abstraction layer that can be applied to transaction API.
+
+  Spring ORM module:
+        The spring ORM module is used for accessing data from databases in an application.
+        It provides the APIs for manipulating  databases with JDO, Hibernate and iBatis.
+
+        Spring ORM supports DAO, which provides a convenient way to build the
+        DAO's based ORM solutions like
+            - Simple declarative transaction management
+            - Thread-safe, light weight template classes
+            - DAO support classes.
+
+  Spring Web MVC module:
+        The Web MVC module of spring implements the MVC architecture for creating Web applications.
+
+        In Spring MVC, when a request is generated from the browser, it first goes  to  the
+        DispatcherServlet class (FrontController), which dispatches a request to a controller using
+        a set of handler mappings.
+
+        The controller extracts and processes the information embedded in a request and sends the result
+        to DispatcherServlet class in the form of model object.
+
+        Finally, the DispatcherServlet class uses ViewResolver classes to send the results to a view,
+        which displays these results to the users.
+
+  Spring DAO:
+        The DAO package in the spring framework provides the DAO support by using data access
+        technologies such as JDBC, Hibernate or JDO.
+        This module introduces a JDBC abstraction layer by eliminating the need to providing tedious
+        JDBC coding.
+
+        It also provides the declarative and programmatic transaction management classes.
+
+        For example, in JDBC the JdbcDaoSupport class and its method are used to access the
+        DataSource instance and a preconfigured jdbc template instance.
+
+
+  Spring Web flow:
+        The Spring Web flow module is the extension of Spring Web MVC.
+        The spring web flow helps in defining XML file or Java class that manages the workflow between
+        different pages of a web application.
+
+        Advantages of using Spring Web Flow along with Spring Web MVC:
+            - The flow between different UI's of the application is clearly provided by defining
+            web flow in XML file.
+
+            - Web flow definitions helps us to virtually split an application in different modules
+            and reuse the multiple modules.
+
+
+  Spring Application Context:
+        The Spring Application Context module is based on the core module.
+
+        Application context org.springframework.context.ApplicationContext is an interface of
+        BeanFactory.
+
+        This module derives its features from the org.springframework.bean package and also supports
+        functionalities such a internationalization, validation, event propagation and resource
+        loading.
+
+        Implements the MessageSource to provide the messaging functionality.
+
+
+
+********************************************************************************
+Project high level overview and functional requirements:
+
+E- Commerce Website
+	- Gifting platform
+	- example, fnp.com or igp.com
+
+
+Different microservice required to develop these platforms:
+	1) Product information Service  --- To store all products information
+	2) Payment Service  --- To handle the different payment methods
+	3) Pricing Service --- To store the pricing information of products
+	4) Cart Service	--- To store the cart information for every user
+	5) User Management Service ---  To store all end user/customers information and user name , passwords
+	6) Product Listing Service ---  To list all the products on website, it needs product information, product
+				images, product price, product reviews, tagging
+	7) Order Management Service --- To maintain the order information for every user
+	8) Review and Rating Service  --- To maintain the reviews and rating for all the products
+	9) Tag Service  --- To create the tags for products and assign the tags to products
+	10) Personalized Service --- To find the products specific to user history
+	11) MetaData Service --- To maintain the location and delivery locations information
+
+
+Above microservice can run independently and can be implemented separately.
+
+Even though these are running separately but can be having dependency with each other for data, so we
+need to think about how microservices can communicate with each and share the data.
+
+There are numerous ways to share the data between microservices:
+    - API - application programming interface
+        - caller microservice will have to call the other microservice to get the data.
+        - caller needs to fetch data but which is real time
+        - Synchronized option
+    - Async message platform:
+        - Other microservice will share the data on messaging platform
+        - As soon as data is posted on messaging platform the dependent service have to poll/fetch it
+        - Examples:
+            Message queues like RabbitMQ, Cloud provider like Amazon- SQS(Simple Queue Service)
+    - Streaming :
+        - One service will post the data on streaming platform
+        - Other service has to fetch that data from the same location which is generally called as
+            topics
+        - Kind of real time option
+        Examples:
+                Apache Kafka, Hive Mqtt (IoT applications), cloud providers like Amazon (Kinesis)
+
+
+
+Agile Methodology:
+
+    SDLC: (Software Development Life Cycle)
+        - Planning
+        - Requirement Understanding
+        - Design (Low and High level design )
+        - Development/Coding
+        - Testing
+        - Deployment
+
+    Waterfall:  Old fashion SDLC methodology.
+
+    PO - Product Owner   --- Product owner is usually as client person who owns product and shares all
+                            the requirements related to product.
+    BA - Business Analyst -- BA are mostly software development organization member who is having the
+                            domain knowledge of client product.
+                            BA works closely with PO to understand the requirements
+    Technical Architect -   Technical person who understands the requirement and puts these into designs
+                            Team lead and senior dev members closely works with TA.
+    Project Manager(Scrum Master) - Project manager who is termed as Scrum master in agile, has specific
+                            Task of making sure everyone working as a one team. Scrum master outlines
+                            the course of action based on plan.
+                            Scrum master has responsibility of delivering the work on time.
+    Development Team (Developer as well as Testers) - Dev team has all the developers as well as testers.
+    Devops Team (Development and Operation Team - Infrastructure.
+                            Sys admins and devops engineers who are mostly working on infrastructure
+                            changes and maintenance.
+
+
+    Ceremonies followed in Agile:
+        - Daily stand-up meeting (DSM):
+              - Status meeting done everyday where every member of team shares the whereabouts as well
+              as the plan for the day and if any blockers.
+        - Sprint planning:
+              - The planning meeting to plan the upcoming spring stories.
+        - Sprint Review:
+              - Review meeting for showing the work done and reviews from stakeholders.
+              - In this meeting every developer has to show case what they have achieved or implemented
+                in last sprint.
+        - Retrospective:
+              - In retrospective meeting team health is discussed and the different parameters are used
+                to identify the team heath.
+                These are grouped as:
+                    What gone well
+                    What didn't go so well
+                    What should we start doing
+                    Any action items
+
+    Keywords of Agile:
+        Sprint : The duration of work which is planned in agile.
+                Mostly it is 2 weeks duration.
+        Stories : are the planned work which is places as a story and developer will be assigned to it.
+        Story points : Kind of number of days which requires to work on specific story.
+        Epic : Kind of placeholder which groups the similar types of stories.
+
+    Tools:
+        Jira (from atlessian) : Sprint dashboards and to create, maintain the stories.
+        Confluence (from atlessian) : used for documentation.
+
+
+*****************************************************************************************
+
+Product information service:
+
+Functional Requirements for product information service.
+
+High-level design
+    - Technology selection
+        - Backend application technology
+        - Database selection
+        - High level architecture
+
+
+Low-level design
+    - API design
+    - Data base schema design
+    - Low level architecture
+
+
+--------------------
+
+High level design
+
+    Technology selection:
+        - Microservice implementation
+        - Backend:
+            Requirement - application should expose the rest endpoints
+            There should be async data sharing
+            Data can be streamed from one service to another service
+
+        Programming language:    Java Spring boot
+
+        Database:
+           What data we are going to store ? ----  Product information
+           What type of data we are suppose to store  ---- relational data
+           Who is going to consume that data  --- other services will be depend on product information
+                                    service data.
+
+           Relational database:
+                        Oracle, Mysql, Sql Server
+        Choice for database: Mysql
+
+
+**************************************************************
+Low level design:
+
+    API Design:
+        API endpoints are implemented using http protocol:
+        The communication happen on top of http protocol.
+
+        HTTP Method which are used in REST API implementation:
+            - POST : create a new resource then only we should use POST method.
+                Request Body : (String, Text, JSON)
+                    This should be part of request because it contains the data which will be used
+                    to create resource.
+            - GET : To fetch the resource from the service
+                There can be two types of GET API implementations
+                    - Fetching single resource (In the request we need to pass the Unique ID)
+                    - Fetching all resources (In a single go - not recommended,
+                                    Using pagination- every request will have page number)
+
+            - PUT : To update the existing resource.
+                    - We need to pass unique ID to update resource
+                    - There should be the request body which consists the update request or
+                    data to be updated
+            - DELETE : To delete the resource
+                    - Needs unique ID to delete the resource.
+                    - In most of the cases the soft delete is used to just update the flag in DB.
+                    - Very few application does actual hard delete
+                    - Even suppose we implement the hard delete we should maintain the audit data
+                      for such cases.
+            - PATCH : To partially update the resource we use PATCH method.
+                    - Similar to put it also requires Unique ID and request body.
+
+        URL: http://localhost:8080/v1/products/product/{productId}
+        Path Variable:  /v1/products/product/p1234567      -- in this p1234567 is path variable
+        Query Param: /v1/products?productId=p1234567&pageNumber=1&pageSize=50
+                    Above example, productId, pageNumber and pageSize are query params
+                    ideally query params are identified based on ?  in URL
+        Request Body:
+            The body which contains the data for request
+            Valid for POST, PUT and PATCH method
+            For GET and DELETE we usually don't need Request Body and as per the standard design
+            these methods should not have Request Body
+
+        Response Body:
+            The request which is returned by all these methods either its a data or just a message
+            is nothing but returned into Response Body.
+
+    ______________________________________________________________________________
+Http Status Codes
+
+2xx - (Success response code)
+    200 - OK response  (In most of the cases we use 200 OK for Get API's and return back the response
+            body also)
+    201 - CREATED --  (As name suggest CREATED is used for creating the new resource in server(db)
+                so this is mostly response code used for POST method as this is the only method
+                used for creating new resource)
+    202 - ACCEPTED -- (As per the naming ACCEPTED is used to denote whatever request has been
+                processed is valid and accepted by server so that user will get proper response)
+                that request body coming with PUT/PATCH method is valid and accepted.)
+    204 - No content -- (This is not commonly practiced HTTP Status code but whenever the client and
+                server has agreed upon the use of No content response code then it can be used.)
+
+4xx - (Client Error Response Code):
+    400 -- Bad Request -- (Whenever user/client has provided some data in request and that data is either
+                invalid or incomplete then we give 400 BAD REQUEST response back to user/client.
+    401 -- Unauthorised -- (Whenever user is trying to access something for which they are not valid user
+                or not authorised in simple language are not having access to do the operation then
+                we should give 401 as Unauthorised user/client response code)
+    403 --  Forbidden Request --  (So similar to 401 but it denotes that the request is not authorised and
+                not clearly able to provide the access)
+    404 -- Not Found -- ( This is commonly used HTTP Status code for client error such as the resource
+                which we are trying to get, delete, put or patch is not found in the database or in
+                backend then we use 404 Not Found error response code.)
+    405 -- Method not allowed -- ( Method not allowed is client error response code used to denote
+                that user has provided wrong http method or the requested method is not supported or
+                implemented yet)
+
+5xx - (Server Error Response Code)
+    500 --  Internal Server Error  -- (This is the case where user/client request is valid but still
+                doesn't go into successful flow. Internal server error should be carefully used by
+                developers to provide proper error message back to user/client)
+    501 -- Not Implemented ( Some features which user is trying to access but not yet implemented
+                falls under 501 as Not implemented response.)
+    502 -- Bad Gateway  -- (Gateway error response code to denote there is some problem at gateway end)
+    503 -- Service unavailable -- (This is to denote that service which you are trying to access is
+                either down or unreachable so server or gateway will provide the response as an
+                503 Service unavailable)
+    504 -- Gateway timeout -- ( If request is taking too much time to give response back to user then
+                we can configure a gateway to provide Gateway Timeout with 504 back to user.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
